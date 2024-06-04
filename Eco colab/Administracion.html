@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - EcoColab</title>
+    <link rel="stylesheet" href="style7.css" >
+    <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+    <nav class="barra">
+        <h1>EcoColab</h1>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="loging.html">Loging</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="crea.html">Crea tu propio proyecto</a></li>
+            <li><a href="seguimiento.html">Seguimiento</a></li>
+            <li><a href="administracion.html">Administración</a></li>
+        </ul>
+    </nav>
+    <section class="admin-section">
+        <h2>Gestión de Usuarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="user-list">
+                <!-- Aquí se agregarán dinámicamente las filas de usuarios -->
+            </tbody>
+        </table>
+        <button onclick="agregarUsuario()">Agregar Usuario</button>
+    </section>
+    <section class="admin-section">
+        <h2>Gestión de Colaboraciones</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Proyecto</th>
+                    <th>Colaboradores</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="collaboration-list">
+                <!-- Aquí se agregarán dinámicamente las filas de colaboraciones -->
+            </tbody>
+        </table>
+        <button onclick="agregarColaboracion()">Agregar Colaboración</button>
+    </section>
+    <section class="admin-section">
+        <h2>Análisis de Datos y Métricas de Impacto</h2>
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Usuarios Totales</h3>
+                <p id="total-users">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Proyectos Totales</h3>
+                <p id="total-projects">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Colaboraciones Activas</h3>
+                <p id="active-collaborations">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Proyectos Completados</h3>
+                <p id="completed-projects">0</p>
+            </div>
+        </div>
+    </section>
+    <script src="administracion.js"></script>
+</body>
+</html>

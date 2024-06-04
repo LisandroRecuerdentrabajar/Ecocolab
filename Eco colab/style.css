@@ -1,0 +1,154 @@
+/* Importación de la fuente Lato desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Peso normal */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav.barra {
+    background-color: #e0f7fa;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.barra h1 {
+    color: #00796b;
+    margin: 0;
+    font-weight: 700; /* Peso más grueso */
+}
+
+nav.barra ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav.barra ul li {
+    margin-left: 20px;
+}
+
+nav.barra ul li a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav.barra ul li a:hover {
+    background-color: #00796b;
+    color: #ffffff;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+header h2 {
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px; /* Limitar el ancho máximo */
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+section h2 {
+    color: #00796b;
+    margin-bottom: 20px;
+    font-weight: 700; /* Peso más grueso */
+}
+
+article {
+    display: flex; /* Disposición en fila */
+    align-items: center; /* Alinear verticalmente al centro */
+    justify-content: space-between; /* Espacio entre elementos */
+    margin-bottom: 20px;
+    padding: 20px; /* Más padding para mayor altura */
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    height: auto; /* Permitir que la altura se ajuste */
+    width: 100%; /* Asegurar que ocupe el ancho completo */
+    box-sizing: border-box; /* Incluir padding y border en el cálculo del ancho */
+}
+
+article div.texto {
+    flex: 1; /* Tomar todo el espacio disponible */
+    margin-right: 20px; /* Espacio entre el texto y la imagen */
+}
+
+article img {
+    max-width: 400px;  /* Limitar el ancho máximo */
+    height: auto;
+    border-radius: 8px;
+}
+
+article h3 {
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+    margin-top: 0;
+}
+
+article p {
+    color: #333333;
+    padding: 0 20px 0 0;  /* Añadir padding a los lados para mejor legibilidad */
+    font-weight: 400; /* Peso normal */
+}
+
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left; /* Alinear el texto a la izquierda */
+    margin-top: 20px;
+    display: flex; /* Usar flexbox para disposición en columnas */
+    justify-content: space-between; /* Espacio entre las dos columnas */
+}
+
+footer .footer-column {
+    flex: 1; /* Cada columna toma un espacio igual */
+    margin: 0 10px; /* Añadir margen a los lados */
+}
+
+footer h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 700; /* Peso más grueso */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 700; /* Peso más grueso */
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #e0f7fa;
+}

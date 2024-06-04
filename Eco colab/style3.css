@@ -1,0 +1,192 @@
+/* Importación de la fuente Lato desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Peso normal */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav.barra {
+    background-color: #e0f7fa;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.barra h1 {
+    color: #00796b;
+    margin: 0;
+    font-weight: 700; /* Peso más grueso */
+}
+
+nav.barra ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav.barra ul li {
+    margin-left: 20px;
+}
+
+nav.barra ul li a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav.barra ul li a:hover {
+    background-color: #00796b;
+    color: #ffffff;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+header h2 {
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px; /* Aumentar el ancho máximo */
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+section h2 {
+    color: #00796b;
+    margin-bottom: 20px;
+    font-weight: 700; /* Peso más grueso */
+    text-align: center;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+article.project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    text-align: left;
+    flex: 1 0 30%; /* Permitir que cada artículo ocupe aproximadamente el 30% del ancho del contenedor */
+    margin: 10px; /* Margen entre los artículos */
+}
+
+article div.texto {
+    flex: 1;
+    margin-right: 20px;
+}
+
+article img {
+    max-width: 300px; /* Limitar el ancho máximo */
+    height: auto;
+    border-radius: 8px;
+}
+
+article h3 {
+    color: #00796b;
+    font-weight: 700; /* Peso más grueso */
+    margin-top: 0;
+}
+
+article p {
+    color: #333333;
+    padding: 0 20px 0 0;
+    font-weight: 400; /* Peso normal */
+}
+
+article button {
+    padding: 10px;
+    background-color: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700; /* Peso más grueso */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+article button:hover {
+    background-color: #005b4f;
+}
+
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .footer-nav,
+footer .footer-contact {
+    margin-bottom: 20px;
+}
+
+footer h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 700; /* Peso más grueso */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 700; /* Peso más grueso */
+    transition: color 0.3s;
+}
+
+footer ul li a:hover {
+    color: #e0f7fa;
+}
+
+footer .footer-nav {
+    float: left;
+    text-align: left;
+    margin-right: 50px;
+}
+
+footer .footer-contact {
+    float: right;
+    text-align: left;
+    margin-left: 50px;
+}
+
+footer::after {
+    content: "";
+    display: table;
+    clear: both;
+}

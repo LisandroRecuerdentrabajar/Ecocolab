@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu propio proyecto - EcoColab</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <nav class="barra">
+        <h1>EcoColab</h1>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="loging.html">Loging</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="crea.html">Crea tu propio proyecto</a></li>
+            <li><a href="seguimiento.html">Seguimiento</a></li>
+            <li><a href="administracion.html">Administracion</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Mis Proyectos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Proyecto</th>
+                    <th>Integrantes</th>
+                    <th>Detalles</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="project-list">
+                <!-- Aquí se agregarán dinámicamente las filas de proyectos existentes -->
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h2>Crear Nuevo Proyecto</h2>
+        <form id="create-project-form">
+            <label for="project-name">Nombre del Proyecto:</label>
+            <input type="text" id="project-name" name="project-name" required>
+            
+            <label for="team-members">Integrantes (Cantidad):</label>
+            <input type="number" id="team-members" name="team-members" required>
+            
+            <label for="project-details">Detalles del Proyecto:</label>
+            <textarea id="project-details" name="project-details" required></textarea>
+            
+            <button type="submit">Crear Proyecto</button>
+        </form>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProjects();
+
+            document.getElementById('create-project-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('project-name').value;
+                const members = document.getElementById('team-members').value;
+                const details = document.getElementById('project-details').value;
+
+                const projects = getProjectsFromLocalStorage();
+                projects.push({ name, members, details });
+                saveProjectsToLocalStorage(projects);
+
+                addProjectToTable(name, members, details);
+
+                document.getElementById('create-project-form').reset();
+            });
+        });
+
+        function getProjectsFromLocalStorage() {
+            const projects = localStorage.getItem('projects');
+            return projects ? JSON.parse(projects) : [];
+        }
+
+        function saveProjectsToLocalStorage(projects) {
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        function addProjectToTable(name, members, details) {
+            const tbody = document.getElementById('project-list');
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${members}</td>
+                <td>${details}</td>
+                <td><button type="button" class="delete-button">Eliminar</button></td>
+            `;
+
+            row.querySelector('.delete-button').addEventListener('click', function() {
+                deleteProject(name);
+                tbody.removeChild(row);
+            });
+
+            tbody.appendChild(row);
+        }
+
+        function loadProjects() {
+            const projects = getProjectsFromLocalStorage();
+            projects.forEach(project => {
+                addProjectToTable(project.name, project.members, project.details);
+            });
+        }
+
+        function deleteProject(name) {
+            const projects = getProjectsFromLocalStorage();
+            const updatedProjects = projects.filter(project => project.name !== name);
+            saveProjectsToLocalStorage(updatedProjects);
+        }
+    </script>
+</body>
+</html>

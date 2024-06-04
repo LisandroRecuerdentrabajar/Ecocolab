@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Proyectos - EcoColab</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+            height: 30px; /* Aumentar la altura de la barra de progreso */
+        }
+        .progress-bar {
+            height: 100%; /* Ajustar la altura de la barra de progreso */
+            background-color: #00796b;
+            width: 0;
+            transition: width 0.3s;
+        }
+        .update-button {
+            padding: 10px 15px;
+            background-color: #00796b;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .update-button:hover {
+            background-color: #005b4f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #dddddd;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: 700;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <nav class="barra">
+        <h1>EcoColab</h1>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="loging.html">Loging</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="crea.html">Crea tu propio proyecto</a></li>
+            <li><a href="seguimiento.html">Seguimiento</a></li>
+            <li><a href="administracion.html">Administracion</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Seguimiento de Proyectos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Proyecto</th>
+                    <th>Progreso</th>
+                    <th>Actualizar Progreso</th>
+                </tr>
+            </thead>
+            <tbody id="tracking-list">
+                <!-- Aquí se agregarán dinámicamente las filas de proyectos para seguimiento -->
+            </tbody>
+        </table>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTrackingProjects();
+
+            function getProjectsFromLocalStorage() {
+                const projects = localStorage.getItem('projects');
+                return projects ? JSON.parse(projects) : [];
+            }
+
+            function saveProjectsToLocalStorage(projects) {
+                localStorage.setItem('projects', JSON.stringify(projects));
+            }
+
+            function addProjectToTrackingTable(name, progress = 0) {
+                const tbody = document.getElementById('tracking-list');
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${name}</td>
+                    <td>
+                        <input type="number" min="0" max="100" value="${progress}" class="progress-input" data-name="${name}" style="width: 60px;"> %
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${progress}%;"></div>
+                        </div>
+                    </td>
+                    <td><button type="button" class="update-button">Actualizar</button></td>
+                `;
+
+                row.querySelector('.update-button').addEventListener('click', function() {
+                    const progressInput = row.querySelector('.progress-input');
+                    const projectName = progressInput.getAttribute('data-name');
+                    const newProgress = progressInput.value;
+                    updateProjectProgress(projectName, newProgress);
+                    updateProgressBar(row, newProgress);
+                });
+
+                tbody.appendChild(row);
+            }
+
+            function loadTrackingProjects() {
+                const projects = getProjectsFromLocalStorage();
+                projects.forEach(project => {
+                    addProjectToTrackingTable(project.name, project.progress);
+                });
+            }
+
+            function updateProjectProgress(name, progress) {
+                const projects = getProjectsFromLocalStorage();
+                const updatedProjects = projects.map(project => {
+                    if (project.name === name) {
+                        return { ...project, progress: progress };
+                    }
+                    return project;
+                });
+                saveProjectsToLocalStorage(updatedProjects);
+            }
+
+            function updateProgressBar(row, progress) {
+                const progressBar = row.querySelector('.progress-bar');
+                progressBar.style.width = `${progress}%`;
+            }
+        });
+    </script>
+</body>
+</html>
